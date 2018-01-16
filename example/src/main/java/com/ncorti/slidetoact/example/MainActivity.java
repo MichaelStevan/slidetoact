@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.reset) {
             ((SlideToActView) findViewById(R.id.welcome_slider)).resetSlider();
+            ((SlideToActView) findViewById(R.id.welcome_slider)).setText("Una prueba de color.");
+            ((SlideToActView) findViewById(R.id.welcome_slider)).setMOuterColor(getResources().getColor(R.color.md_deep_orange_A200));
         }
         return super.onOptionsItemSelected(item);
     }

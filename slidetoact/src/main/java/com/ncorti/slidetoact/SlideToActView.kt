@@ -77,9 +77,17 @@ class SlideToActView(context: Context,
     private var mTextXPosition = -1f
 
     /** Outer color used by the slider (primary) */
-    private val mOuterColor: Int
+    var mOuterColor: Int = 0
+        set(value) {
+            field = value
+            invalidate()
+        }
     /** Inner color used by the slider (secondary, icon and border) */
-    private val mInnerColor: Int
+    var mInnerColor: Int = 0
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     /** Slider cursor position (between 0 and (`reaWidth - mAreaHeight)) */
     private var mPosition: Int = 0
@@ -144,6 +152,7 @@ class SlideToActView(context: Context,
     private var mIsCompleted = false
 
     private var mOutlineProviders: List<Any> = ArrayList()
+
 
     /** Public flag to lock the slider */
     var isLocked = false
@@ -259,6 +268,10 @@ class SlideToActView(context: Context,
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         if (canvas == null) return
+
+        // Update paint in case the colors changed
+        mOuterPaint.color = mOuterColor
+        mInnerPaint.color = mInnerColor
 
         // Outer area
         mOuterRect.set(mActualAreaWidth.toFloat(), 0f, mAreaWidth.toFloat() - mActualAreaWidth.toFloat(), mAreaHeight.toFloat())
