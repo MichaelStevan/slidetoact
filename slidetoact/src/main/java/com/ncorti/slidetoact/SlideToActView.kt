@@ -273,6 +273,9 @@ class SlideToActView(context: Context,
         mOuterPaint.color = mOuterColor
         mInnerPaint.color = mInnerColor
 
+        // Painting the arrow tint again in case it changed
+        mDrawableArrow.setTint(mOuterColor)
+
         // Outer area
         mOuterRect.set(mActualAreaWidth.toFloat(), 0f, mAreaWidth.toFloat() - mActualAreaWidth.toFloat(), mAreaHeight.toFloat())
         canvas.drawRoundRect(mOuterRect, mBorderRadius.toFloat(), mBorderRadius.toFloat(), mOuterPaint)
